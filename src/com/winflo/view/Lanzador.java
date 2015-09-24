@@ -1,21 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.winflo.view;
 
-/**
- *
- * @author RichiSoft
- */
 public class Lanzador {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+   public static void main(String args[]) {
+        
+       /**
+        * Iniciamos main, diciendo que aplique el estilo LookAndFeel, que hallamos
+        * elegido en todas las clase que requieran graficos o JFRAME.
+        */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error al cargar el Look&Feel: "+e);
+        }
+        
+        /**
+         * Aqui lanzamos la clase interfaz que es la primera que se tiene que mostrar
+         * al ejecutar nuestra aplicacion.
+         */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                // aqui referimos el nombre Interfaz() como primer frame.
+                new Interfaz().setVisible(true);
+            }
+        });
     }
-    
 }
