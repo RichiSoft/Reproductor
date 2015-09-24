@@ -1,12 +1,24 @@
 /**
- *  Interfaz de localizacion de los archivos que vallamos a abrir.
+ * Interfaz de localizacion de los archivos que vallamos a abrir.
  */
 package com.winflo.view;
+
+import com.winflo.controller.cargarArchivo;
+import java.io.File;
 
 public class AbrirArchivo extends javax.swing.JFrame {
 
     public AbrirArchivo() {
         initComponents();
+        int status = jFileChooser1.showOpenDialog(null);// Da un entero
+// Si apretamos en aceptar ocurrirá esto
+        if (status == jFileChooser1.APPROVE_OPTION) {
+            File selectedFile = jFileChooser1.getSelectedFile();
+            System.out.println(selectedFile.getParent());
+// Si apretamos en cancelar o cerramos la ventana ocurrirá esto
+        } else if (status == jFileChooser1.CANCEL_OPTION) {
+            System.out.println("Cancelar");
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -48,9 +60,50 @@ public class AbrirArchivo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        // Puta madre primoooooooo -maty
-    }//GEN-LAST:event_jFileChooser1ActionPerformed
+        /**
+         * Creamos un objeto del tipo File llamado archivo, que almacenara el
+         * archivo de audio.
+         */
+        File archivo = jFileChooser1.getSelectedFile();
 
+        /**
+         * Instaciamos la clase cargarArchivo que manipulara el archivo de audio
+         * y se lo mandamos atraves de la funcion Cargar().
+         */
+        cargarArchivo cargar = new cargarArchivo();
+        cargar.Cargar(archivo);
+    }//GEN-LAST:event_jFileChooser1ActionPerformed
+public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AbrirArchivo().setVisible(true);
+            }
+        });
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFileChooser jFileChooser1;
     // End of variables declaration//GEN-END:variables
