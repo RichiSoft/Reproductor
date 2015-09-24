@@ -48,7 +48,7 @@ public class AbrirArchivo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        // TODO add your handling code here:
+        // Puta madre primoooooooo -maty
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
